@@ -2,9 +2,12 @@ class Grid {
   constructor(root, size) {
     this.root = root;
     this.size = size;
-    this.activeColor = Grid.colorOptions.RAINBOW;
-    this.gridLines = true;
+    this.activeColor = Grid.colorOptions.BLACK;
+    this.gridLines = false;
     this.render();
+
+    this.root.style.display = "grid";
+    this.root.style.outline = "2px solid #fff";
   }
 
   static colorOptions = Object.freeze({
@@ -57,6 +60,10 @@ class Grid {
     const hex = [...Array(6)].map((i) => Math.floor(Math.random() * 16).toString(16)).join("");
     return `#${hex}`;
   }
+
+  clear = () => {
+    this.render();
+  };
 
   setSize(size) {
     this.size = size;

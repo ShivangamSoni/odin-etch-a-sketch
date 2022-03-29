@@ -14,31 +14,25 @@
       <div id="menu">
         <fieldset>
           <legend>Color</legend>
-          <label>
-            Black
-            <input class="colorSelector" type="radio" name="color" value="BLACK" checked />
-          </label>
+          <input type="radio" id="color1" name="color" value="BLACK" checked />
+          <label class="colorSelector" for="color1">Black</label>
 
-          <label>
-            Eraser
-            <input class="colorSelector" type="radio" name="color" value="ERASE" checked />
-          </label>
+          <input type="radio" id="color2" name="color" value="ERASE" />
+          <label class="colorSelector" for="color2">Eraser</label>
 
-          <label>
-            Rainbow
-            <input class="colorSelector" type="radio" name="color" value="RAINBOW" checked />
-          </label>
+          <input type="radio" id="color3" name="color" value="RAINBOW" />
+          <label class="colorSelector" for="color3">Rainbow</label>
         </fieldset>
 
         <fieldset>
-          <legend>Size</legend>
+          <legend>Size: 8 X 8</legend>
           <input id="sizeSlider" type="range" min="4" max="64" value="8" step="1" />
         </fieldset>
 
-        <label>
-          Grid Lines:
-          <input id="gridLineSelector" type="checkbox" checked />
-        </label>
+        <input id="gridLineSelector" type="checkbox" />
+        <label for="gridLineSelector">Grid Lines</label>
+
+        <button type="button" id="clear">Clear</button>
       </div>
 
       <div id="pixelPad"></div>

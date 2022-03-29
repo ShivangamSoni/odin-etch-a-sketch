@@ -17,6 +17,7 @@ body {
   color: #fff;
 }
 
+/* Main */
 main {
   display: flex;
   flex-flow: row wrap;
@@ -27,6 +28,7 @@ main {
   gap: 30px;
 }
 
+/* Menu --Start-- */
 #menu {
   display: flex;
   flex-flow: column nowrap;
@@ -36,18 +38,123 @@ main {
 
 #menu > fieldset {
   display: flex;
-  flex-flow: column nowrap;
-  gap: 10px;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 5px;
   padding: 10px;
+  height: 80px;
 }
 
-#menu > fieldset > input {
+/* Color Selector --Start-- */
+.colorSelector {
+  padding: 0.5em 1em;
+  outline: 1px solid #fff;
+  cursor: pointer;
+  position: relative;
+  isolation: isolate;
+  transition: transform 400ms linear;
+}
+
+.colorSelector::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 400ms linear;
+}
+
+.colorSelector:hover {
+  color: #333;
+}
+
+.colorSelector:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 400ms linear;
+}
+
+input[name="color"] {
+  appearance: none;
+}
+
+input[name="color"]:checked + .colorSelector {
+  color: #333;
+}
+
+input[name="color"]:checked + .colorSelector::after {
+  transform: scaleX(1);
+}
+/* Color Selector --End-- */
+
+/* Size Slider */
+#sizeSlider {
   width: 100%;
 }
 
+/* Grid Line Toggle --Start-- */
+#gridLineSelector {
+  appearance: none;
+}
+
+#gridLineSelector + label {
+  position: relative;
+  width: fit-content;
+  padding-right: 25px;
+  cursor: pointer;
+}
+
+#gridLineSelector + label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 15px;
+  border-radius: 20px;
+  outline: 1px solid #fff;
+}
+
+#gridLineSelector + label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 8%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: red;
+  transition: transform 300ms linear;
+}
+
+#gridLineSelector:checked + label::before {
+  transform: translate(128%, -50%);
+  background-color: green;
+}
+/* Grid Line Toggle --End-- */
+
+/* Clear Button */
+#clear {
+  appearance: none;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  font-size: 16px;
+  padding: 0.5em 2em;
+  cursor: pointer;
+}
+/* Menu --End-- */
+
+/* PixelPad */
 #pixelPad {
-  display: grid;
-  outline: 2px solid #fff;
   width: 600px;
   height: 600px;
 }
@@ -62,9 +169,5 @@ main {
     width: 100%;
     align-items: center;
     justify-content: center;
-  }
-
-  #menu > fieldset {
-    flex-flow: row wrap;
   }
 }
